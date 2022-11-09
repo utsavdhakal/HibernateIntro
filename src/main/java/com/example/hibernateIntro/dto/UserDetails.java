@@ -1,18 +1,28 @@
 package com.example.hibernateIntro.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-@Entity(name = "USER_DETAILS")
+import java.util.Date;
+
+@Entity
+@Table(name = "USER_DETAILS")
 public class UserDetails {
-
-    private int userID;
-
-    private String username;
-
     @Id
     @Column(name = "USER_ID")
+    private int userID;
+
+    /*@Transient*/
+    @Column(name = "USER_NAME")
+    private String username;
+
+    /*@Temporal(TemporalType.TIME)*/
+    @Column(name = "REGISTERED_AT")
+    private Date registeredAt;
+
+    /*@Lob*/
+    @Column(name = "DESCRIPTION")
+    private String description;
+
     public int getUserID() {
         return userID;
     }
@@ -21,12 +31,27 @@ public class UserDetails {
         this.userID = id;
     }
 
-    @Column(name = "USER_NAME")
     public String getUsername() {
-        return username + " from getter";
+        return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Date getRegisteredAt() {
+        return registeredAt;
+    }
+
+    public void setRegisteredAt(Date registeredAt) {
+        this.registeredAt = registeredAt;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
