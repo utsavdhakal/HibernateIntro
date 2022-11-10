@@ -1,5 +1,6 @@
 package com.example.hibernateIntro;
 
+import com.example.hibernateIntro.dto.Address;
 import com.example.hibernateIntro.dto.UserDetails;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,8 +11,8 @@ import java.util.Date;
 public class HibernateTest {
     public static void main(String[] args) {
 
-        UserDetails user = new UserDetails();
-        user.setUsername("Nick");
+        Address address = new Address("street", "city", "state", 101);
+        UserDetails user = new UserDetails("John", address);
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 

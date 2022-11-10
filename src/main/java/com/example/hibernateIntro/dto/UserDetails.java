@@ -12,6 +12,17 @@ public class UserDetails {
 
     private String username;
 
+    @Embedded
+    private Address address;
+
+    public UserDetails() {
+
+    }
+    public UserDetails(String username, Address address) {
+        this.username = username;
+        this.address = address;
+    }
+
     public int getUserID() {
         return userID;
     }
@@ -28,4 +39,11 @@ public class UserDetails {
         this.username = username;
     }
 
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }
