@@ -5,9 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class HibernateTest {
@@ -20,10 +17,18 @@ public class HibernateTest {
         user.setDescription("Hibernate is an ORM Tool.");
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
-        Session session = sessionFactory.openSession();
 
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.persist(user);
         session.getTransaction().commit();
+        session.close();
+
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        UserDetails userDetails = session.get(UserDetails.class, 1);
+        System.out.println(userDetails);
+        session.getTransaction().commit();
+        session.close();
     }
 }

@@ -54,4 +54,14 @@ public class UserDetails {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "UserDetails{" +
+                "userID=" + userID +
+                ", username='" + username + '\'' +
+                ", registeredAt=" + registeredAt +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
