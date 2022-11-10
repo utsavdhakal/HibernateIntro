@@ -11,23 +11,13 @@ public class HibernateTest {
     public static void main(String[] args) {
 
         UserDetails user = new UserDetails();
-        user.setUserID(1);
-        user.setUsername("John");
-        user.setRegisteredAt(new Date());
-        user.setDescription("Hibernate is an ORM Tool.");
+        user.setUsername("Nick");
 
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.persist(user);
-        session.getTransaction().commit();
-        session.close();
-
-        session = sessionFactory.openSession();
-        session.beginTransaction();
-        UserDetails userDetails = session.get(UserDetails.class, 1);
-        System.out.println(userDetails);
         session.getTransaction().commit();
         session.close();
     }
